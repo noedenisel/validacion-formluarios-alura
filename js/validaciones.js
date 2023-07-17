@@ -1,10 +1,20 @@
 // console.log("validaciones");
 
-const inputBday = document.querySelector("#birth")
-inputBday.addEventListener("blur", (evento) =>{
-    validarNacimiento(evento.target);
-})
+// const inputBday = document.querySelector("#birth")
+// inputBday.addEventListener("blur", (evento) =>{
+//     validarNacimiento(evento.target);
+// })
 
+export function validar (input) {
+    const inputType = input.dataset.type
+    if(validadores[inputType]){
+        validadores[inputType](input)
+    }
+}
+
+const validadores = {
+    bday : input => validarNacimiento(input)
+}
 function validarNacimiento (input){
     const fechaRegistro = new Date(input.value)
     // console.log(fechaRegistro);
